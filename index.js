@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 
 app.post("/pushemail", (req, res) => {
   // Check if the request is from AWS SNS
-  if (req.headers["x-amz-sns-message-type"] === "Notification") {
+  
     // Parse the SNS message JSON
     const snsMessage = JSON.parse(req.body);
     console.log("Received SNS message:", snsMessage);
@@ -26,7 +26,7 @@ app.post("/pushemail", (req, res) => {
     // For example, you can extract relevant information and store it
     // in your `emails` array or perform any other desired actions
     emails.push(snsMessage);
-  }
+  
 
   res.send(emails);
 });
