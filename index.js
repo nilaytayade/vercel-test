@@ -1,12 +1,10 @@
+// index.js
 const express = require("express");
-const bodyParser = require("body-parser");
 
 const app = express();
 const PORT = 4000;
-const emails = [];
-
-// Parse JSON bodies
-app.use(bodyParser.json());
+emails = [];
+app.use(express.json());
 
 app.listen(PORT, () => {
   console.log(`API listening on PORT ${PORT} `);
@@ -17,17 +15,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/pushemail", (req, res) => {
-  // Check if the request is from AWS SNS
-  
-    // Parse the SNS message JSON
-    const snsMessage = JSON.parse(req.body);
-    console.log("Received SNS message:", snsMessage);
-    // Process the SNS message as needed
-    // For example, you can extract relevant information and store it
-    // in your `emails` array or perform any other desired actions
-    emails.push(snsMessage);
-  
-
+  emails.push(req.body);
+  emails.push(req.headers);
   res.send(emails);
 });
 
