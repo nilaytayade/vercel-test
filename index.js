@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.send(emails);
 });
 
-app.get("/pushemail", (req, res) => {
+app.post("/pushemail", (req, res) => {
   emails.push(req.body);
   res.send(emails);
 });
