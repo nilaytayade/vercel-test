@@ -4,7 +4,6 @@ const express = require("express");
 const app = express();
 const PORT = 4000;
 emails = [];
-app.use(express.json());
 
 app.listen(PORT, () => {
   console.log(`API listening on PORT ${PORT} `);
